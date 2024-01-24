@@ -18,6 +18,12 @@ export default {
         .then((response) => {
           this.store.films = response.data.results;
           console.log(this.store.films);
+          for (let i = 0; i < this.store.films.length; i++) {
+            console.log(this.store.films[i].title);
+            console.log(this.store.films[i].original_title);
+            console.log(this.store.films[i].original_language);
+            console.log(this.store.films[i].vote_average);
+          }
         });
     },
   },
