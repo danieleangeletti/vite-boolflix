@@ -8,7 +8,7 @@ export default {
 </script>
 
 <template>
-  <footer>FOOTER</footer>
+  <footer></footer>
 </template>
 
 <style lang="scss" scoped></style>

@@ -8,7 +8,7 @@ export default {
 </script>
 
 <template>
-  <main>MAIN</main>
+  <main></main>
 </template>
 
 <style lang="scss" scoped></style>
