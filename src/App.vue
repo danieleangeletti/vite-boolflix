@@ -20,7 +20,7 @@ export default {
       .get(this.store.base_url_movie, {
         params: {
           api_key: this.store.api_key,
-          query: "back",
+          query: "",
         },
       })
       .then((response) => {
