@@ -5,16 +5,20 @@ export default {
   data() {
     return { store };
   },
-  methods: {
-    get_image(lang) {
+  computed: {
+    get_image() {
       let final_link = "https://flagicons.lipis.dev/flags/4x3/";
 
-      if (lang == "en") {
+      if (this.original_language == "en") {
         final_link += "gb";
-      } else if (lang == "ja") {
+      } else if (this.original_language == "ja") {
         final_link += "jp";
+      } else if (this.original_language == "ko") {
+        final_link += "kr";
+      } else if (this.original_language == "zh") {
+        final_link += "cn";
       } else {
-        final_link += lang;
+        final_link += this.original_language;
       }
       final_link += ".svg";
 
@@ -37,9 +41,7 @@ export default {
         <div>Il titolo è: {{ title }}.</div>
         <div>Il titolo originale è: {{ original_title }}.</div>
         <div>La lingua originale è: {{ original_language }}.</div>
-        <div>
-          La bandiera è: <img :src="get_image(original_language)" alt="" />
-        </div>
+        <div>La bandiera è: <img :src="get_image" alt="" /></div>
         <div>Il voto medio è: {{ vote }}.</div>
       </li>
     </ul>
