@@ -5,6 +5,7 @@ export default {
   data() {
     return {
       store,
+      is_hovering: false,
     };
   },
   computed: {
@@ -50,8 +51,9 @@ export default {
 </script>
 
 <template>
-  <div class="col-3 col-margin">
-    <!-- <div>Il titolo è: {{ title }}.</div>
+  <div class="col-3 col-margin total-box">
+    <div class="poster-box h-100">
+      <!-- <div>Il titolo è: {{ title }}.</div>
     <div>Il titolo originale è: {{ original_title }}.</div>
     <div>La lingua originale è: {{ original_language }}.</div>
     <div>
@@ -62,12 +64,14 @@ export default {
       <i v-for="(elem, i) in get_vote" class="fa-solid fa-star"></i>
       <i v-for="(elem, i) in 5 - get_vote" class="fa-regular fa-star"></i>
     </div> -->
-    <div v-if="poster_path != null">
-      <img class="w-100" :src="get_poster" alt="" />
+      <div v-if="poster_path != null">
+        <img class="w-100" :src="get_poster" alt="" />
+      </div>
+      <div v-else class="w-100 h-100 bg-dark d-flex align-items-center">
+        <h3 class="text-white text-center">SFONDO NON DISPONIBILE</h3>
+      </div>
     </div>
-    <div v-else class="w-100 h-100 bg-dark d-flex align-items-center">
-      <h3 class="text-white text-center">SFONDO NON DISPONIBILE</h3>
-    </div>
+    <div class="info-box">asd</div>
   </div>
 </template>
 
@@ -78,4 +82,27 @@ export default {
 .col-margin {
   margin-bottom: calc((var(--bs-gutter-x) * 0.5) * 2);
 }
+.total-box .info-box {
+  display: none;
+}
+.total-box:hover .info-box {
+  display: block;
+}
+.total-box:hover .poster-box {
+  display: none;
+}
+
+// STESSA COSA CON SCSS
+
+// .total-box {
+//   .info-box {
+//     display: none;
+//   }
+//   &:hover .info-box {
+//     display: block;
+//   }
+//   &:hover .poster-box {
+//     display: none;
+//   }
+// }
 </style>
