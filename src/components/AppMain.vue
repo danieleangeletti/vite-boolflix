@@ -15,6 +15,9 @@ export default {
   <main>
     <div class="container">
       <SingleFilm v-for="(elem, i) in store.films" :key="i" :film="elem" />
+      <div v-for="(elem, i) in store.languages">
+        {{ elem }}
+      </div>
     </div>
   </main>
 </template>

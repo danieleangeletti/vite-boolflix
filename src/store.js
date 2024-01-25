@@ -7,4 +7,33 @@ export const store = reactive({
   films: [],
   series: [],
   search_film: "",
+  languages: [
+    "ru", // russian
+    "lt", // lithuanian
+    "et", // estonian
+    "hu", // hungarian
+    "lb", // luxembourgish
+    "at", // austrian
+    "nl", // netherlands
+    "es", // spanish
+    "pl", // polish
+    "uk", // ukrainian
+    "fr", // french
+    "be", // belgium
+    "it", // italian
+    "ga", // irish
+    "da", // danish
+    "gb", // united kingdom
+    "sv", // swedish
+    "cs", // czech
+    "el", // greek
+    "us", // usa
+    "au", // australian
+    "ca", // canadian
+    "lv", // latvian
+    "de", // deutsch
+    "ja", // japanese
+    "zh", // chinese
+    "il", // israel
+  ],
 });
