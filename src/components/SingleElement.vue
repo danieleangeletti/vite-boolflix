@@ -3,7 +3,9 @@ import { store } from "../store.js";
 
 export default {
   data() {
-    return { store };
+    return {
+      store,
+    };
   },
   computed: {
     get_image() {
@@ -33,7 +35,8 @@ export default {
       return final_link;
     },
     get_vote() {
-      return Math.round(this.vote / 2);
+      const film_or_serie_vote = Math.round(this.vote / 2);
+      return film_or_serie_vote;
     },
   },
   props: {
@@ -56,7 +59,11 @@ export default {
         <div>
           La bandiera è: <img class="languages-logo" :src="get_image" alt="" />
         </div>
-        <div>Il voto medio è: {{ get_vote }}.</div>
+        <div>
+          Il voto medio è:
+          <i v-for="(elem, i) in get_vote" class="fa-solid fa-star"></i>
+          <i v-for="(elem, i) in 5 - get_vote" class="fa-regular fa-star"></i>
+        </div>
         <div v-if="poster_path != null">
           L'immagine di copertina è: <img :src="get_poster" alt="" />
         </div>
