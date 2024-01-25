@@ -7,10 +7,10 @@ export default {
   },
   methods: {},
   props: {
-    film_title: String,
-    film_original_title: String,
-    film_original_language: String,
-    film_vote: Number,
+    title: String,
+    original_title: String,
+    original_language: String,
+    vote: Number,
   },
 };
 </script>
@@ -18,10 +18,10 @@ export default {
 <template>
   <div class="container">
     <ul>
-      <li>Il film è: {{ film_title }}.</li>
-      <li>Il titolo del film originale è:{{ film_original_title }}.</li>
-      <li>La lingua originale è: {{ film_original_language }}.</li>
-      <li>Il voto medio è: {{ film_vote }}.</li>
+      <li>Il titolo è: {{ title }}.</li>
+      <li>Il titolo originale è:{{ original_title }}.</li>
+      <li>La lingua originale è: {{ original_language }}.</li>
+      <li>Il voto medio è: {{ vote }}.</li>
     </ul>
     <hr />
   </div>

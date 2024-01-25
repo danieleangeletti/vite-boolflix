@@ -15,17 +15,28 @@ export default {
     AppFooter,
   },
   methods: {
-    get_film_name() {
+    get_films_and_series() {
       axios
         .get(this.store.base_url_movie, {
           params: {
             api_key: this.store.api_key,
-            query: this.store.search_film,
+            query: this.store.search,
           },
         })
         .then((response) => {
           this.store.films = response.data.results;
           console.log(this.store.films);
+        });
+      axios
+        .get(this.store.base_url_series, {
+          params: {
+            api_key: this.store.api_key,
+            query: this.store.search,
+          },
+        })
+        .then((response) => {
+          this.store.series = response.data.results;
+          console.log(this.store.series);
         });
     },
   },
@@ -33,7 +44,7 @@ export default {
 </script>
 
 <template>
-  <AppHeader @perform_search="get_film_name()" />
+  <AppHeader @perform_search="get_films_and_series()" />
 
   <AppMain />
 

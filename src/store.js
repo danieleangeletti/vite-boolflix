@@ -6,7 +6,7 @@ export const store = reactive({
   base_url_series: "https://api.themoviedb.org/3/search/tv",
   films: [],
   series: [],
-  search_film: "",
+  search: "",
   languages: [
     "ru", // russian &#127479&#127482
     "lt", // lithuanian &#127473&#127481

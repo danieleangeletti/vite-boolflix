@@ -21,7 +21,7 @@ export default {
           <div class="input-group flex-nowrap">
             <div>
               <input
-                v-model="store.search_film"
+                v-model="store.search"
                 type="text"
                 class="form-control"
                 placeholder="Search film"

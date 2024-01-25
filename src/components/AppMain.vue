@@ -18,12 +18,20 @@ export default {
       <SingleElement
         v-for="(elem, i) in store.films"
         :key="i"
-        :film_title="elem.title"
-        :film_original_title="elem.original_title"
-        :film_original_language="elem.original_language"
-        :film_vote="elem.vote_average"
+        :title="elem.title"
+        :original_title="elem.original_title"
+        :original_language="elem.original_language"
+        :vote="elem.vote_average"
       />
       <h1>SERIES</h1>
+      <SingleElement
+        v-for="(elem, i) in store.series"
+        :key="i"
+        :title="elem.name"
+        :original_title="elem.original_name"
+        :original_language="elem.original_language"
+        :vote="elem.vote_average"
+      />
     </div>
   </main>
 </template>
