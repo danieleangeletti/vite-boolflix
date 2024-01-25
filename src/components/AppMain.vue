@@ -22,6 +22,7 @@ export default {
         :original_title="elem.original_title"
         :original_language="elem.original_language"
         :vote="elem.vote_average"
+        :poster_path="elem.poster_path"
       />
       <h1>SERIES</h1>
       <SingleElement
@@ -31,6 +32,7 @@ export default {
         :original_title="elem.original_name"
         :original_language="elem.original_language"
         :vote="elem.vote_average"
+        :poster_path="elem.poster_path"
       />
     </div>
   </main>
