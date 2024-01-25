@@ -32,6 +32,9 @@ export default {
 
       return final_link;
     },
+    get_vote() {
+      return Math.round(this.vote / 2);
+    },
   },
   props: {
     title: String,
@@ -53,7 +56,7 @@ export default {
         <div>
           La bandiera è: <img class="languages-logo" :src="get_image" alt="" />
         </div>
-        <div>Il voto medio è: {{ vote }}.</div>
+        <div>Il voto medio è: {{ get_vote }}.</div>
         <div v-if="poster_path != null">
           L'immagine di copertina è: <img :src="get_poster" alt="" />
         </div>
