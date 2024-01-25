@@ -29,7 +29,7 @@ export default {
       return final_link;
     },
     get_poster() {
-      let final_link = "https://image.tmdb.org/t/p/w185";
+      let final_link = "https://image.tmdb.org/t/p/w342";
       final_link += this.poster_path;
 
       return final_link;
@@ -50,31 +50,32 @@ export default {
 </script>
 
 <template>
-  <div class="container">
-    <ul>
-      <li>
-        <div>Il titolo è: {{ title }}.</div>
-        <div>Il titolo originale è: {{ original_title }}.</div>
-        <div>La lingua originale è: {{ original_language }}.</div>
-        <div>
-          La bandiera è: <img class="languages-logo" :src="get_image" alt="" />
-        </div>
-        <div>
-          Il voto medio è:
-          <i v-for="(elem, i) in get_vote" class="fa-solid fa-star"></i>
-          <i v-for="(elem, i) in 5 - get_vote" class="fa-regular fa-star"></i>
-        </div>
-        <div v-if="poster_path != null">
-          L'immagine di copertina è: <img :src="get_poster" alt="" />
-        </div>
-      </li>
-    </ul>
-    <hr />
+  <div class="col-3 col-margin">
+    <!-- <div>Il titolo è: {{ title }}.</div>
+    <div>Il titolo originale è: {{ original_title }}.</div>
+    <div>La lingua originale è: {{ original_language }}.</div>
+    <div>
+      La bandiera è: <img class="languages-logo" :src="get_image" alt="" />
+    </div>
+    <div>
+      Il voto medio è:
+      <i v-for="(elem, i) in get_vote" class="fa-solid fa-star"></i>
+      <i v-for="(elem, i) in 5 - get_vote" class="fa-regular fa-star"></i>
+    </div> -->
+    <div v-if="poster_path != null">
+      <img class="w-100" :src="get_poster" alt="" />
+    </div>
+    <div v-else class="w-100 h-100 bg-dark d-flex align-items-center">
+      <h3 class="text-white text-center">SFONDO NON DISPONIBILE</h3>
+    </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .languages-logo {
   height: 24px;
+}
+.col-margin {
+  margin-bottom: calc((var(--bs-gutter-x) * 0.5) * 2);
 }
 </style>

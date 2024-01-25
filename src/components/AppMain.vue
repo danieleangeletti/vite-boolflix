@@ -15,25 +15,29 @@ export default {
   <main>
     <div class="container">
       <h1>FILMS</h1>
-      <SingleElement
-        v-for="(elem, i) in store.films"
-        :key="i"
-        :title="elem.title"
-        :original_title="elem.original_title"
-        :original_language="elem.original_language"
-        :vote="elem.vote_average"
-        :poster_path="elem.poster_path"
-      />
+      <div class="row">
+        <SingleElement
+          v-for="(elem, i) in store.films"
+          :key="i"
+          :title="elem.title"
+          :original_title="elem.original_title"
+          :original_language="elem.original_language"
+          :vote="elem.vote_average"
+          :poster_path="elem.poster_path"
+        />
+      </div>
       <h1>SERIES</h1>
-      <SingleElement
-        v-for="(elem, i) in store.series"
-        :key="i"
-        :title="elem.name"
-        :original_title="elem.original_name"
-        :original_language="elem.original_language"
-        :vote="elem.vote_average"
-        :poster_path="elem.poster_path"
-      />
+      <div class="row">
+        <SingleElement
+          v-for="(elem, i) in store.series"
+          :key="i"
+          :title="elem.name"
+          :original_title="elem.original_name"
+          :original_language="elem.original_language"
+          :vote="elem.vote_average"
+          :poster_path="elem.poster_path"
+        />
+      </div>
     </div>
   </main>
 </template>

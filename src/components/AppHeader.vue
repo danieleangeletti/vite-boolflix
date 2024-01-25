@@ -14,8 +14,8 @@ export default {
   <header class="bg-black">
     <div class="container h-100">
       <div class="d-flex justify-content-between align-items-center h-100">
-        <div>
-          <h3>BOOLFLIX</h3>
+        <div class="h-100 d-flex align-items-center">
+          <img class="h-75" src="../assets/img/boolflix-logo.png" alt="" />
         </div>
         <div>
           <div class="input-group flex-nowrap">
