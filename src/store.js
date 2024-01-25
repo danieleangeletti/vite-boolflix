@@ -18,7 +18,7 @@ export const store = reactive({
     "es", // spanish
     "pl", // polish
     "uk", // ukrainian
-    "fr", // french
+    "fr", // french &#127467&#127479
     "be", // belgium
     "it", // italian
     "ga", // irish
