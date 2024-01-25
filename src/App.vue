@@ -14,25 +14,26 @@ export default {
     AppMain,
     AppFooter,
   },
-  methods: {},
-  mounted() {
-    axios
-      .get(this.store.base_url_movie, {
-        params: {
-          api_key: this.store.api_key,
-          query: "",
-        },
-      })
-      .then((response) => {
-        this.store.films = response.data.results;
-        console.log(this.store.films);
-      });
+  methods: {
+    get_film_name() {
+      axios
+        .get(this.store.base_url_movie, {
+          params: {
+            api_key: this.store.api_key,
+            query: this.store.search_film,
+          },
+        })
+        .then((response) => {
+          this.store.films = response.data.results;
+          console.log(this.store.films);
+        });
+    },
   },
 };
 </script>
 
 <template>
-  <AppHeader />
+  <AppHeader @perform_search="get_film_name()" />
 
   <AppMain />
 

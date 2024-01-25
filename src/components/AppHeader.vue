@@ -6,21 +6,7 @@ export default {
   data() {
     return { store };
   },
-  methods: {
-    get_film_name() {
-      axios
-        .get(this.store.base_url_movie, {
-          params: {
-            api_key: this.store.api_key,
-            query: this.store.search_film,
-          },
-        })
-        .then((response) => {
-          this.store.films = response.data.results;
-          console.log(this.store.films);
-        });
-    },
-  },
+  methods: {},
 };
 </script>
 
@@ -45,7 +31,7 @@ export default {
             </div>
             <div>
               <button
-                @click="get_film_name"
+                @click="$emit('perform_search')"
                 type="button"
                 class="btn btn-primary ms-3"
               >

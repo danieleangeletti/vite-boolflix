@@ -8,15 +8,15 @@ export const store = reactive({
   series: [],
   search_film: "",
   languages: [
-    "ru", // russian
-    "lt", // lithuanian
-    "et", // estonian
-    "hu", // hungarian
-    "lb", // luxembourgish
-    "at", // austrian
-    "nl", // netherlands
-    "es", // spanish
-    "pl", // polish
+    "ru", // russian &#127479&#127482
+    "lt", // lithuanian &#127473&#127481
+    "et", // estonian &#127466&#127466
+    "hu", // hungarian &#127469&#127482
+    "lb", // luxembourgish &#127473&#127482
+    "at", // austrian &#127462&#127481
+    "nl", // netherlands &#127475&#127473
+    "es", // spanish &#127466&#127480
+    "pl", // polish &#127477&#127473
     "uk", // ukrainian
     "fr", // french &#127467&#127479
     "be", // belgium
