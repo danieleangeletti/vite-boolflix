@@ -46,32 +46,40 @@ export default {
     original_language: String,
     vote: Number,
     poster_path: String,
+    overview: String,
   },
 };
 </script>
 
 <template>
   <div class="col-3 col-margin total-box">
-    <div class="poster-box h-100">
-      <!-- <div>Il titolo è: {{ title }}.</div>
-    <div>Il titolo originale è: {{ original_title }}.</div>
-    <div>La lingua originale è: {{ original_language }}.</div>
-    <div>
-      La bandiera è: <img class="languages-logo" :src="get_image" alt="" />
-    </div>
-    <div>
-      Il voto medio è:
-      <i v-for="(elem, i) in get_vote" class="fa-solid fa-star"></i>
-      <i v-for="(elem, i) in 5 - get_vote" class="fa-regular fa-star"></i>
-    </div> -->
-      <div v-if="poster_path != null">
-        <img class="w-100" :src="get_poster" alt="" />
+    <div class="poster-box border-white h-100">
+      <div class="h-100" v-if="poster_path != null">
+        <img class="w-100 h-100" :src="get_poster" alt="" />
       </div>
       <div v-else class="w-100 h-100 bg-dark d-flex align-items-center">
-        <h3 class="text-white text-center">SFONDO NON DISPONIBILE</h3>
+        <h3 class="text-white text-center">POSTER NOT AVAILABLE</h3>
       </div>
     </div>
-    <div class="info-box">asd</div>
+    <div class="info-box border-white p-3 h-100 text-white">
+      <div><b>Title</b>: {{ title }}</div>
+      <div><b>Original title</b>: {{ original_title }}</div>
+      <div><b>Original language</b>: {{ original_language }}</div>
+      <div>
+        <b>Flag</b>: <img class="languages-logo" :src="get_image" alt="" />
+      </div>
+      <div>
+        <b>Average vote</b>:
+        <i v-for="(elem, i) in get_vote" class="fa-solid fa-star smaller"></i>
+        <i
+          v-for="(elem, i) in 5 - get_vote"
+          class="fa-regular fa-star smaller"
+        ></i>
+      </div>
+      <div v-if="overview.length > 0">
+        <b>Overview</b>: <span class="smaller">{{ overview }}</span>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -82,6 +90,9 @@ export default {
 .col-margin {
   margin-bottom: calc((var(--bs-gutter-x) * 0.5) * 2);
 }
+.border-white {
+  border: 1px solid white;
+}
 .total-box .info-box {
   display: none;
 }
@@ -90,6 +101,9 @@ export default {
 }
 .total-box:hover .poster-box {
   display: none;
+}
+.smaller {
+  font-size: 0.8em;
 }
 
 // STESSA COSA CON SCSS

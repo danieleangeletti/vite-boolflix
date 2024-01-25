@@ -35,7 +35,7 @@ export default {
                 type="button"
                 class="btn btn-primary ms-3"
               >
-                PRESS
+                SEARCH
               </button>
             </div>
           </div>
