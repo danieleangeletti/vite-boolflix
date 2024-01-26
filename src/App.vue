@@ -38,24 +38,6 @@ export default {
           this.store.series = response.data.results;
           console.log(this.store.series);
         });
-      // axios
-      //   .get("https://api.themoviedb.org/3/tv/40000/aggregate_credits", {
-      //     params: {
-      //       api_key: this.store.api_key,
-      //     },
-      //   })
-      //   .then((response) => {
-      //     console.log(response);
-      //     if (response.data.cast.length >= 5) {
-      //       for (let i = 0; i < 5; i++) {
-      //         console.log(response.data.cast[i].name);
-      //       }
-      //     } else {
-      //       for (let i = 0; i < response.data.cast.length; i++) {
-      //         console.log(response.data.cast[i].name);
-      //       }
-      //     }
-      //   });
     },
   },
 };

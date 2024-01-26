@@ -1,5 +1,6 @@
 <script>
 import { store } from "../store.js";
+import axios from "axios";
 
 export default {
   data() {
@@ -16,6 +17,7 @@ export default {
     poster_path: String,
     overview: String,
     id: Number,
+    type: String,
   },
   computed: {
     get_image() {
@@ -50,8 +52,50 @@ export default {
     },
   },
   methods: {
-    get_id() {
-      console.log(this.id);
+    get_cast_and_details() {
+      if (this.type == "film") {
+        axios
+          .get("https://api.themoviedb.org/3/movie/" + this.id + "/credits", {
+            params: {
+              api_key: this.store.api_key,
+            },
+          })
+          .then((response) => {
+            this.film_cast = response.data.cast;
+            console.log(this.film_cast);
+          });
+        axios
+          .get("https://api.themoviedb.org/3/movie/" + this.id, {
+            params: {
+              api_key: this.store.api_key,
+            },
+          })
+          .then((response) => {
+            this.film_genres = response.data.genres;
+            console.log(this.film_genres);
+          });
+      } else {
+        axios
+          .get("https://api.themoviedb.org/3/tv/" + this.id + "/credits", {
+            params: {
+              api_key: this.store.api_key,
+            },
+          })
+          .then((response) => {
+            this.serie_cast = response.data.cast;
+            console.log(this.serie_cast);
+          });
+        axios
+          .get("https://api.themoviedb.org/3/tv/" + this.id, {
+            params: {
+              api_key: this.store.api_key,
+            },
+          })
+          .then((response) => {
+            this.serie_genres = response.data.genres;
+            console.log(this.serie_genres);
+          });
+      }
     },
   },
 };
@@ -86,7 +130,11 @@ export default {
         <b>Overview</b>: <span class="smaller">{{ overview }}</span>
       </div>
       <div class="d-flex justify-content-center mt-2 mb-2">
-        <button @click="get_id" type="button" class="btn btn-info">
+        <button
+          @click="get_cast_and_details"
+          type="button"
+          class="btn btn-info"
+        >
           GET CAST AND GENRES
         </button>
       </div>

@@ -26,6 +26,7 @@ export default {
           :poster_path="elem.poster_path"
           :overview="elem.overview"
           :id="elem.id"
+          :type="'film'"
         />
       </div>
       <h1>SERIES</h1>
@@ -40,6 +41,7 @@ export default {
           :poster_path="elem.poster_path"
           :overview="elem.overview"
           :id="elem.id"
+          :type="'serie'"
         />
       </div>
     </div>
