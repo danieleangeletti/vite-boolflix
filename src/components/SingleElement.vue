@@ -6,6 +6,10 @@ export default {
   data() {
     return {
       store,
+      film_cast: [],
+      serie_cast: [],
+      film_genres: [],
+      serie_genres: [],
     };
   },
   props: {
@@ -60,14 +64,14 @@ export default {
             },
           })
           .then((response) => {
-            this.store.film_cast = response.data.cast;
-            if (this.store.film_cast.length <= 5) {
-              for (let i = 0; i < this.store.film_cast.length; i++) {
-                console.log(this.store.film_cast[i].name);
+            this.film_cast = response.data.cast;
+            if (this.film_cast.length <= 5) {
+              for (let i = 0; i < this.film_cast.length; i++) {
+                console.log(this.film_cast[i].name);
               }
             } else {
               for (let i = 0; i < 5; i++) {
-                console.log(this.store.film_cast[i].name);
+                console.log(this.film_cast[i].name);
               }
             }
           });
@@ -78,9 +82,9 @@ export default {
             },
           })
           .then((response) => {
-            this.store.film_genres = response.data.genres;
-            for (let i = 0; i < this.store.film_genres.length; i++) {
-              console.log(this.store.film_genres[i].name);
+            this.film_genres = response.data.genres;
+            for (let i = 0; i < this.film_genres.length; i++) {
+              console.log(this.film_genres[i].name);
             }
           });
       } else {
@@ -91,14 +95,14 @@ export default {
             },
           })
           .then((response) => {
-            this.store.serie_cast = response.data.cast;
-            if (this.store.serie_cast.length <= 5) {
-              for (let i = 0; i < this.store.serie_cast.length; i++) {
-                console.log(this.store.serie_cast[i].name);
+            this.serie_cast = response.data.cast;
+            if (this.serie_cast.length <= 5) {
+              for (let i = 0; i < this.serie_cast.length; i++) {
+                console.log(this.serie_cast[i].name);
               }
             } else {
               for (let i = 0; i < 5; i++) {
-                console.log(this.store.serie_cast[i].name);
+                console.log(this.serie_cast[i].name);
               }
             }
           });
@@ -109,9 +113,9 @@ export default {
             },
           })
           .then((response) => {
-            this.store.serie_genres = response.data.genres;
-            for (let i = 0; i < this.store.serie_genres.length; i++) {
-              console.log(this.store.serie_genres[i].name);
+            this.serie_genres = response.data.genres;
+            for (let i = 0; i < this.serie_genres.length; i++) {
+              console.log(this.serie_genres[i].name);
             }
           });
       }
@@ -121,7 +125,9 @@ export default {
 </script>
 
 <template>
-  <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 col-margin total-box">
+  <div
+    class="col-sm-12 col-md-6 col-lg-4 col-xl-3 col-margin total-box smaller"
+  >
     <div class="poster-box border-white h-100">
       <div class="h-100" v-if="poster_path != null">
         <img class="w-100 h-100" :src="get_poster" alt="" />
@@ -142,7 +148,7 @@ export default {
         <i v-for="(elem, i) in get_vote" class="fa-solid fa-star"></i>
         <i v-for="(elem, i) in 5 - get_vote" class="fa-regular fa-star"></i>
       </div>
-      <div v-if="overview.length > 0" class="h-120p overflow-auto">
+      <div v-if="overview.length > 0" class="h-100p overflow-auto">
         <b>Overview</b>: <span>{{ overview }}</span>
       </div>
       <div class="d-flex justify-content-center mt-3 mb-3">
@@ -153,6 +159,38 @@ export default {
         >
           GET CAST AND GENRES
         </button>
+      </div>
+      <div v-if="film_cast.length > 0" class="h-60p overflow-auto mb-1">
+        <h6>CAST:</h6>
+        <ul>
+          <li v-for="(elem, i) in film_cast">
+            {{ elem.name }}
+          </li>
+        </ul>
+      </div>
+      <div v-if="film_genres.length > 0" class="h-60p overflow-auto">
+        <h6>GENRES:</h6>
+        <ul>
+          <li v-for="(elem, i) in film_genres">
+            {{ elem.name }}
+          </li>
+        </ul>
+      </div>
+      <div v-if="serie_cast.length > 0" class="h-60p overflow-auto mb-1">
+        <h6>CAST:</h6>
+        <ul>
+          <li v-for="(elem, i) in serie_cast">
+            {{ elem.name }}
+          </li>
+        </ul>
+      </div>
+      <div v-if="serie_genres.length > 0" class="h-60p overflow-auto">
+        <h6>GENRES:</h6>
+        <ul>
+          <li v-for="(elem, i) in serie_genres">
+            {{ elem.name }}
+          </li>
+        </ul>
       </div>
     </div>
   </div>
@@ -178,10 +216,13 @@ export default {
   display: none;
 }
 .smaller {
-  font-size: 0.8em;
+  font-size: 0.9em;
 }
-.h-120p {
-  height: 120px;
+.h-60p {
+  height: 60px;
+}
+.h-100p {
+  height: 100px;
 }
 .total-box {
   height: 65vh;

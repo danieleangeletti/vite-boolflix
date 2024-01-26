@@ -7,8 +7,4 @@ export const store = reactive({
   films: [],
   series: [],
   search: "",
-  film_cast: [],
-  serie_cast: [],
-  film_genres: [],
-  serie_genres: [],
 });
