@@ -8,6 +8,15 @@ export default {
       is_hovering: false,
     };
   },
+  props: {
+    title: String,
+    original_title: String,
+    original_language: String,
+    vote: Number,
+    poster_path: String,
+    overview: String,
+    id: Number,
+  },
   computed: {
     get_image() {
       let final_link = "https://flagicons.lipis.dev/flags/4x3/";
@@ -40,13 +49,10 @@ export default {
       return film_or_serie_vote;
     },
   },
-  props: {
-    title: String,
-    original_title: String,
-    original_language: String,
-    vote: Number,
-    poster_path: String,
-    overview: String,
+  methods: {
+    get_id() {
+      console.log(this.id);
+    },
   },
 };
 </script>
@@ -78,6 +84,11 @@ export default {
       </div>
       <div v-if="overview.length > 0">
         <b>Overview</b>: <span class="smaller">{{ overview }}</span>
+      </div>
+      <div class="d-flex justify-content-center mt-2 mb-2">
+        <button @click="get_id" type="button" class="btn btn-info">
+          GET CAST AND GENRES
+        </button>
       </div>
     </div>
   </div>

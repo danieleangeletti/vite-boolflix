@@ -7,6 +7,8 @@ export const store = reactive({
   films: [],
   series: [],
   search: "",
-  series_cast_api:
-    "https://api.themoviedb.org/3/tv/series_id/aggregate_credits",
+  films_credits_api: "https://api.themoviedb.org/3/movie/movie_id/credits",
+  series_credits_api: "https://api.themoviedb.org/3/tv/series_id/credits",
+  films_details_api: "https://api.themoviedb.org/3/movie/movie_id",
+  series_details_api: "https://api.themoviedb.org/3/tv/series_id",
 });

@@ -25,6 +25,7 @@ export default {
           :vote="elem.vote_average"
           :poster_path="elem.poster_path"
           :overview="elem.overview"
+          :id="elem.id"
         />
       </div>
       <h1>SERIES</h1>
@@ -38,6 +39,7 @@ export default {
           :vote="elem.vote_average"
           :poster_path="elem.poster_path"
           :overview="elem.overview"
+          :id="elem.id"
         />
       </div>
     </div>
