@@ -61,7 +61,7 @@ export default {
         <h3 class="text-white text-center">POSTER NOT AVAILABLE</h3>
       </div>
     </div>
-    <div class="info-box border-white p-3 h-100 text-white">
+    <div class="info-box border-white p-3 h-100 text-white bg-dark">
       <div><b>Title</b>: {{ title }}</div>
       <div><b>Original title</b>: {{ original_title }}</div>
       <div><b>Original language</b>: {{ original_language }}</div>

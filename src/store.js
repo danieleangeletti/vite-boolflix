@@ -7,4 +7,6 @@ export const store = reactive({
   films: [],
   series: [],
   search: "",
+  series_cast_api:
+    "https://api.themoviedb.org/3/tv/series_id/aggregate_credits",
 });
