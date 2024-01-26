@@ -6,7 +6,6 @@ export default {
   data() {
     return {
       store,
-      is_hovering: false,
     };
   },
   props: {
@@ -61,8 +60,16 @@ export default {
             },
           })
           .then((response) => {
-            this.film_cast = response.data.cast;
-            console.log(this.film_cast);
+            this.store.film_cast = response.data.cast;
+            if (this.store.film_cast.length <= 5) {
+              for (let i = 0; i < this.store.film_cast.length; i++) {
+                console.log(this.store.film_cast[i].name);
+              }
+            } else {
+              for (let i = 0; i < 5; i++) {
+                console.log(this.store.film_cast[i].name);
+              }
+            }
           });
         axios
           .get("https://api.themoviedb.org/3/movie/" + this.id, {
@@ -71,8 +78,10 @@ export default {
             },
           })
           .then((response) => {
-            this.film_genres = response.data.genres;
-            console.log(this.film_genres);
+            this.store.film_genres = response.data.genres;
+            for (let i = 0; i < this.store.film_genres.length; i++) {
+              console.log(this.store.film_genres[i].name);
+            }
           });
       } else {
         axios
@@ -82,8 +91,16 @@ export default {
             },
           })
           .then((response) => {
-            this.serie_cast = response.data.cast;
-            console.log(this.serie_cast);
+            this.store.serie_cast = response.data.cast;
+            if (this.store.serie_cast.length <= 5) {
+              for (let i = 0; i < this.store.serie_cast.length; i++) {
+                console.log(this.store.serie_cast[i].name);
+              }
+            } else {
+              for (let i = 0; i < 5; i++) {
+                console.log(this.store.serie_cast[i].name);
+              }
+            }
           });
         axios
           .get("https://api.themoviedb.org/3/tv/" + this.id, {
@@ -92,8 +109,10 @@ export default {
             },
           })
           .then((response) => {
-            this.serie_genres = response.data.genres;
-            console.log(this.serie_genres);
+            this.store.serie_genres = response.data.genres;
+            for (let i = 0; i < this.store.serie_genres.length; i++) {
+              console.log(this.store.serie_genres[i].name);
+            }
           });
       }
     },
@@ -102,7 +121,7 @@ export default {
 </script>
 
 <template>
-  <div class="col-3 col-margin total-box">
+  <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 col-margin total-box">
     <div class="poster-box border-white h-100">
       <div class="h-100" v-if="poster_path != null">
         <img class="w-100 h-100" :src="get_poster" alt="" />
@@ -120,16 +139,13 @@ export default {
       </div>
       <div>
         <b>Average vote</b>:
-        <i v-for="(elem, i) in get_vote" class="fa-solid fa-star smaller"></i>
-        <i
-          v-for="(elem, i) in 5 - get_vote"
-          class="fa-regular fa-star smaller"
-        ></i>
+        <i v-for="(elem, i) in get_vote" class="fa-solid fa-star"></i>
+        <i v-for="(elem, i) in 5 - get_vote" class="fa-regular fa-star"></i>
       </div>
-      <div v-if="overview.length > 0">
-        <b>Overview</b>: <span class="smaller">{{ overview }}</span>
+      <div v-if="overview.length > 0" class="h-120p overflow-auto">
+        <b>Overview</b>: <span>{{ overview }}</span>
       </div>
-      <div class="d-flex justify-content-center mt-2 mb-2">
+      <div class="d-flex justify-content-center mt-3 mb-3">
         <button
           @click="get_cast_and_details"
           type="button"
@@ -163,6 +179,12 @@ export default {
 }
 .smaller {
   font-size: 0.8em;
+}
+.h-120p {
+  height: 120px;
+}
+.total-box {
+  height: 65vh;
 }
 
 // STESSA COSA CON SCSS

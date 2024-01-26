@@ -7,8 +7,6 @@ export const store = reactive({
   films: [],
   series: [],
   search: "",
-  film_details_api: "https://api.themoviedb.org/3/movie/movie_id",
-  serie_details_api: "https://api.themoviedb.org/3/tv/series_id",
   film_cast: [],
   serie_cast: [],
   film_genres: [],
