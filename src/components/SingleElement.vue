@@ -10,6 +10,7 @@ export default {
       serie_cast: [],
       film_genres: [],
       serie_genres: [],
+      flag: 0,
     };
   },
   props: {
@@ -56,68 +57,77 @@ export default {
   },
   methods: {
     get_cast_and_details() {
-      if (this.type == "film") {
-        axios
-          .get("https://api.themoviedb.org/3/movie/" + this.id + "/credits", {
-            params: {
-              api_key: this.store.api_key,
-            },
-          })
-          .then((response) => {
-            this.film_cast = response.data.cast;
-            if (this.film_cast.length <= 5) {
-              for (let i = 0; i < this.film_cast.length; i++) {
-                console.log(this.film_cast[i].name);
+      if (this.flag == 0) {
+        if (this.type == "film") {
+          axios
+            .get("https://api.themoviedb.org/3/movie/" + this.id + "/credits", {
+              params: {
+                api_key: this.store.api_key,
+              },
+            })
+            .then((response) => {
+              this.film_cast = response.data.cast;
+              if (this.film_cast.length <= 5) {
+                for (let i = 0; i < this.film_cast.length; i++) {
+                  console.log(this.film_cast[i].name);
+                }
+              } else {
+                for (let i = 0; i < 5; i++) {
+                  console.log(this.film_cast[i].name);
+                }
               }
-            } else {
-              for (let i = 0; i < 5; i++) {
-                console.log(this.film_cast[i].name);
+            });
+          axios
+            .get("https://api.themoviedb.org/3/movie/" + this.id, {
+              params: {
+                api_key: this.store.api_key,
+              },
+            })
+            .then((response) => {
+              this.film_genres = response.data.genres;
+              for (let i = 0; i < this.film_genres.length; i++) {
+                console.log(this.film_genres[i].name);
               }
-            }
-          });
-        axios
-          .get("https://api.themoviedb.org/3/movie/" + this.id, {
-            params: {
-              api_key: this.store.api_key,
-            },
-          })
-          .then((response) => {
-            this.film_genres = response.data.genres;
-            for (let i = 0; i < this.film_genres.length; i++) {
-              console.log(this.film_genres[i].name);
-            }
-          });
+            });
+        } else {
+          axios
+            .get("https://api.themoviedb.org/3/tv/" + this.id + "/credits", {
+              params: {
+                api_key: this.store.api_key,
+              },
+            })
+            .then((response) => {
+              this.serie_cast = response.data.cast;
+              if (this.serie_cast.length <= 5) {
+                for (let i = 0; i < this.serie_cast.length; i++) {
+                  console.log(this.serie_cast[i].name);
+                }
+              } else {
+                for (let i = 0; i < 5; i++) {
+                  console.log(this.serie_cast[i].name);
+                }
+              }
+            });
+          axios
+            .get("https://api.themoviedb.org/3/tv/" + this.id, {
+              params: {
+                api_key: this.store.api_key,
+              },
+            })
+            .then((response) => {
+              this.serie_genres = response.data.genres;
+              for (let i = 0; i < this.serie_genres.length; i++) {
+                console.log(this.serie_genres[i].name);
+              }
+            });
+        }
+        this.flag = 1;
       } else {
-        axios
-          .get("https://api.themoviedb.org/3/tv/" + this.id + "/credits", {
-            params: {
-              api_key: this.store.api_key,
-            },
-          })
-          .then((response) => {
-            this.serie_cast = response.data.cast;
-            if (this.serie_cast.length <= 5) {
-              for (let i = 0; i < this.serie_cast.length; i++) {
-                console.log(this.serie_cast[i].name);
-              }
-            } else {
-              for (let i = 0; i < 5; i++) {
-                console.log(this.serie_cast[i].name);
-              }
-            }
-          });
-        axios
-          .get("https://api.themoviedb.org/3/tv/" + this.id, {
-            params: {
-              api_key: this.store.api_key,
-            },
-          })
-          .then((response) => {
-            this.serie_genres = response.data.genres;
-            for (let i = 0; i < this.serie_genres.length; i++) {
-              console.log(this.serie_genres[i].name);
-            }
-          });
+        this.film_cast = [];
+        this.serie_cast = [];
+        this.film_genres = [];
+        this.serie_genres = [];
+        this.flag = 0;
       }
     },
   },
