@@ -32,18 +32,9 @@ Always round up to the next whole number, we do not manage half-full (or half-em
 
 Milestone 4:
 Transform what we have done so far into a real web app, creating a complete layout similar to Netflix:
+
 ● A header that contains the logo and search bar
+
 ● After searching for something in the search bar, the results appear in the form of "cards" where the background is represented by the cover image (I recommend the poster_path with w342)
+
 ● When hovering over a card, additional information already taken in previous points plus the overview appears
-Mockup:
-Mockup (on hover on the first element):
-Tips:
-Go in order, following the milestones, do not think about the graphical interface until point 4
-Do not think about the graphical interface until point 4 (yes, I wrote it twice), everything can be resolved with an unstylized <ul>
-Remember what you have learned so far with different exercises:
-○ Always tackle the basic minimum case first, without complications (e.g., "If the original title is the same as the title, maybe I should hide it," "If I do a search that has no results, I should write something" are questions NOT TO ASK until you have completely done a base case)
-○ If you feel like copying/pasting code, DON'T DO IT, make a function! Those few minutes saved will make your code less readable and every time you have to intervene on that part you will lose much more time
-○ Before moving on, make sure you have resolved that part in the best possible way (no repeated code, minimal possible code, clear and reusable functions). You will save a lot of time solving the following exercises
-○ Better to solve one fewer milestone, but with well-written code
-To get the list of languages use:
-https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
